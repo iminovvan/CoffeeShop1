@@ -9,5 +9,6 @@ public class UserRequestDTO {
     private String lastName;
     private int age;
     private String email;
+    private String password;
     private UserRole role;
 }

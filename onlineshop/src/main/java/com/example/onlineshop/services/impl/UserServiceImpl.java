@@ -7,6 +7,8 @@ import com.example.onlineshop.exceptions.ResourceNotFoundException;
 import com.example.onlineshop.repositories.UserRepository;
 import com.example.onlineshop.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,6 +18,9 @@ import java.util.stream.Collectors;
 public class UserServiceImpl implements UserService {
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -34,6 +39,7 @@ public class UserServiceImpl implements UserService {
         user.setLastName(userDto.getLastName());
         user.setAge(userDto.getAge());
         user.setEmail(userDto.getEmail());
+        user.setPassword(passwordEncoder.encode(userDto.getPassword())); //encode password before saving the user
         user.setRole(userDto.getRole());
         user = userRepository.save(user);
         return mapToResponseDto(user);
@@ -52,6 +58,7 @@ public class UserServiceImpl implements UserService {
         user.setLastName(userDto.getFirstName());
         user.setAge(userDto.getAge());
         user.setEmail(userDto.getEmail());
+        user.setPassword(passwordEncoder.encode(userDto.getPassword())); //encode password before saving the user
         user.setRole(userDto.getRole());
         user = userRepository.save(user);
         return mapToResponseDto(user);
