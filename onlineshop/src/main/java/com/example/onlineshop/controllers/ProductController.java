@@ -19,7 +19,6 @@ public class ProductController {
     @PostMapping
     @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<ProductDto> createProduct(@RequestBody ProductDto productDto) {
-        System.out.println("Attempting to create a product");
         return ResponseEntity.ok(productService.createProduct(productDto));
     }
 

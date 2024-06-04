@@ -4,16 +4,14 @@ import com.example.onlineshop.dto.requests.UserRequestDTO;
 import com.example.onlineshop.enums.UserRole;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.*;
 
 @Entity
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "users")
@@ -30,8 +28,8 @@ public class User {
     @Column(unique = true)
     private String email;
     @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private UserRole role;
-
     @Column(nullable = false)
     private String password;
 }

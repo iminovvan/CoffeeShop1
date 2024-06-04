@@ -1,18 +1,15 @@
 package com.example.onlineshop.dto.requests;
 
-import com.example.onlineshop.enums.UserRole;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
+@Builder
 @NoArgsConstructor
-public class UserRequestDTO {
-    private String firstName;
-    private String lastName;
-    private int age;
+@AllArgsConstructor
+public class AuthenticationRequest{
     private String email;
     private String password;
-    private UserRole role;
 }

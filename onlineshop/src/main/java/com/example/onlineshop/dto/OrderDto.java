@@ -13,5 +13,5 @@ public class OrderDto {
     private OrderStatus status;
     private UserResponseDTO user;
 
-    private List<OrderItemDto> items;
+    private List<OrderItemDto> items = new ArrayList<>();
 }
