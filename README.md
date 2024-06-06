@@ -14,3 +14,10 @@ $ mvn test
 $ mvn -Dtest=TestApp1 test
 * Run multiple test classes
 $ mvn -Dtest=TestApp1,TestApp2 test
+## docker-compose instructions: 
+### Check if the container is running:
+* $ docker ps
+#### if no, restart 
+* $ docker-compose restart db
+#### build docker compose yml
+* $ docker-compose up --build
