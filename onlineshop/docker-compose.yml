@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: coffeeshop2
+      MYSQL_USER: coffeeshop2
+      MYSQL_PASSWORD: password
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+  app:
+    image: coffeeshop
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      DB_USERNAME: root
+      DB_PASSWORD: password
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/coffeeshop2
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
