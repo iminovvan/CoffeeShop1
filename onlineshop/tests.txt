@@ -1,0 +1,100 @@
+------------------> CRUD Operations <----------------
+1. creates a new customer
+2. PUT http://localhost:8080/customer
+3. {
+       "customerID": 1,
+       "firstName": "Anna",
+       "lastName": "Larson",
+       "age": 25,
+       "email": "anna.larson@gmail.com"
+
+   }
+4. 200 OK
+   Customer Created Successfully.
+---------------------------------------------------
+1. shows all customers details
+2. GET http://localhost:8080/customer
+3. none
+4. 200 OK
+[
+    {
+        "customerID": 1,
+        "firstName": "Anna",
+        "lastName": "Larson",
+        "age": 25,
+        "email": "anna.larson@gmail.com"
+    },
+    {
+        "customerID": 2,
+        "firstName": "Jack",
+        "lastName": "Tyler",
+        "age": 34,
+        "email": "jack.tyler@gmail.com"
+    },
+    {
+        "customerID": 3,
+        "firstName": "Hannah",
+        "lastName": "Lee",
+        "age": 27,
+        "email": "hannah.lee@gmail.com"
+    }
+]
+---------------------------------------------------
+1. updates customer's data
+2. PUT http://localhost:8080/customer
+3. {
+       "customerID": 1,
+       "firstName": "Anna",
+       "lastName": "Brown",
+       "age": 25,
+       "email": "anna.brown@gmail.com"
+   }
+4. 200 OK
+   Customer Updated Successfully.
+-------------------------------------------------
+1. Gets customer's data by ID
+2. GET http://localhost:8080/customer/2
+3. none
+4. 200 OK
+    {
+        "customerID": 2,
+        "firstName": "Jack",
+        "lastName": "Tyler",
+        "age": 34,
+        "email": "jack.tyler@gmail.com"
+    }
+---------------------------------------------------
+1. Deletes customer's data by ID
+2. DELETE http://localhost:8080/customer/3
+3. None
+4. 200 OK
+   Customer Deleted Successfully.
+
+------------> Authentication and authorization <------------
+
+1. Registers a new user 
+2. POST http://localhost:8080/users/register
+3. {
+    "firstName": "Jennie",
+    "lastName": "Kim",
+    "age": 28,
+    "email": "jennie.kim@gmail.com",
+    "password": "jennie"
+}
+4. 200 OK
+"token" : "eyJhbGciOiJIUzI1NiJ9
+.eyJzdWIiOiJuYXJnaXphLmltaW5vdmFAZ21haWwuY29tIiwiaWF0IjoxNzE3NDAyMzYwLCJleHAiOjE3MTc0MDM4MDB9
+.VhKntvzTSaCYu3Zq-tsnkGgboTKAnAzJcnKI1WQVX2k"
+
+------------------------------------------------------
+
+1. Authenticates registered user 
+2. POST http://localhost:8080/users/authenticate
+3. {
+  "email": "jennie.kim@gmail.com", 
+  "password": "jennie"
+}
+4. 200 OK 
+"token" : "eyJhbGciOiJIUzI1NiJ9
+.eyJzdWIiOiJuYXJnaXphLmltaW5vdmFAZ21haWwuY29tIiwiaWF0IjoxNzE3NDAyMzYwLCJleHAiOjE3MTc0MDMTF9
+.cQPfO0tjwe3w4GYzylOfq-2agvcebA26Hl1bAZOLjKQ"
